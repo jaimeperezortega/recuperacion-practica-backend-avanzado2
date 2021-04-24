@@ -1,0 +1,62 @@
+[
+    {
+    "tags": [
+    "lifestyle",
+    "mobile"
+    ],
+    "_id": "601e4b115be18f07a5eb6f60",
+    "name": "Salomon V5",
+    "price": 231,
+    "venta": false,
+    "photo": "salomonv3.jpg",
+    "__v": 0
+    },
+    {
+    "tags": [
+    "motor",
+    "work"
+    ],
+    "_id": "601e4b525be18f07a5eb6f61",
+    "name": "Salomon V4",
+    "price": 34,
+    "venta": false,
+    "photo": "salomonv2.jpg",
+    "__v": 0
+    },
+    {
+    "tags": [
+    "motor",
+    "lifestyle"
+    ],
+    "_id": "601e4b7a5be18f07a5eb6f62",
+    "name": "Salomon V1",
+    "price": 78,
+    "venta": true,
+    "photo": "salomonv4.jpg",
+    "__v": 0
+    },
+    {
+    "tags": [
+    "work",
+    "lifestyle"
+    ],
+    "_id": "601e4b975be18f07a5eb6f63",
+    "name": "Salomon V2",
+    "price": 78,
+    "venta": true,
+    "photo": "salomonv1.jpg",
+    "__v": 0
+    },
+    {
+    "tags": [
+    "work",
+    "lifestyle"
+    ],
+    "_id": "601e4cee5be18f07a5eb6f64",
+    "name": "Salomon V3",
+    "price": 153,
+    "venta": true,
+    "photo": "salomonv3.jpg",
+    "__v": 0
+    }
+    ]
