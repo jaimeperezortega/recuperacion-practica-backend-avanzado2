@@ -119,7 +119,7 @@ router.post("/api/anuncios", async (req, res, next)=>{
 
 // ACTUALIZAR UN PRODUCTO : PUT / api/productos:id(body) Hay que pasar 2 parámetros, el ID del producto que quiero actualizar y en el body qué es lo que le quiero actualizar a ese producto
 
-router.put("/:id", async (req, res, next)=>{
+router.put("/api/anuncios/:id", async (req, res, next)=>{
     try {
         const _id = req.params.id;
         const productoData = req.body;
@@ -145,7 +145,7 @@ router.put("/:id", async (req, res, next)=>{
 //DELETE /api/productos:id
 //Elimina un producto
 
-router.delete("/:id", async (req, res, next)=>{
+router.delete("/api/anuncios/:id", async (req, res, next)=>{
     try {
         const _id= req.params.id;
         await Producto.deleteOne({_id : _id})

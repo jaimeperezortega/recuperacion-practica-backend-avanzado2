@@ -114,7 +114,11 @@ Protocolo https NGROK
 
 Comando para arrancar NGROK en un puerto determinado: ./ngrok http 3000
 
-### DEBUGGING
+### CLUSTER
+
+Podemos arrancar varias instancias de nodeapi y que las peticiones van a llegar a un módulo cluster que luego va a redigirir las peticiones a cualquiera de las instancias que haya arrancadas. Cada proceso va a utiliozar un hilo distinto. El módulo cluster va recibiendo peticiones y las va repartiendo para dar el mejor rendimiento posible en función de los recursos de mi máquina.
+
+Todas las instancias comparten el mismo puerto
 
 
 
