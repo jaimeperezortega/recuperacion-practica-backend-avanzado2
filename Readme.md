@@ -118,9 +118,30 @@ Comando para arrancar NGROK en un puerto determinado: ./ngrok http 3000
 
 Podemos arrancar varias instancias de nodeapi y que las peticiones van a llegar a un módulo cluster que luego va a redigirir las peticiones a cualquiera de las instancias que haya arrancadas. Cada proceso va a utiliozar un hilo distinto. El módulo cluster va recibiendo peticiones y las va repartiendo para dar el mejor rendimiento posible en función de los recursos de mi máquina.
 
-Todas las instancias comparten el mismo puerto
+Todas las instancias comparten el mismo puerto.
+
+Podemos ver cada uno de los workers con su pid en el monitor de actividfad del mac
+
+### AUTENTICACIÓN
+
+Es necesario habilitar un sistema de control de acceso a la BBDD. Para ello nos creamos un fichero de configuración en el que establecemos unas credenciales iniciales para poder entrar a la BBDD. Es un fichero externo a nuestro código que no está expuesta en nuestro código.
+
+Usamos el módulo de terceros dotenv. 
+
+Se instala con npm install dotenv
+
+Creo un archivo.env con el comando: MONGODB_CONNECTION_STR = mongodb://localhost/nodepop
 
 
+Al principio de nuestra app tenemos que poner : require('dotenv).config()
+
+En connectMongoose en lugar de harcodear la URL de la BBDD pongo la variable de entorno:
+
+mongoose.connect(process.env.MONGODB_CONNECTION_STR, { 
+    useNewUrlParser: true,
+    useUnifiedTopology: true ,
+    useCreateIndex: true 
+});
 
 
 

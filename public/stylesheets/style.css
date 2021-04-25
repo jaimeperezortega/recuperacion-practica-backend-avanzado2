@@ -11,3 +11,13 @@ img{
   width: 200px;
   height: 120px
 }
+
+.ads-wrapper{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.ad-card{
+  margin:2rem;
+}

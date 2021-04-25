@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-
+require('dotenv').config()
 /**
  * Module dependencies.
  */
@@ -23,11 +23,22 @@ if(cluster.isMaster) {
     cluster.fork() //Creamos un worker
   }
 
+  cluster.on('listening', (worker, address)=>{
+    console.log(`Worker ${worker.id} con pid (process ID) ${worker.process.pid} está conectado al puerto ${address.port}`);
+  } )
+
+  
+  //Me suscribo al evento exit para hacer algo cuando detecta que un worker se ha caido
+  cluster.on('exit', (worker, code, signal) =>{
+    console.log(`Worker ${worker.id} con pid (process ID) ${worker.process.pid} ha terminado con code= ${code} y signal= ${signal}`);
+    console.log("Arranco un nuevo worker");
+    cluster.fork();
+  })
 
 } else {
       //Lo que va a ocurrir cuando no somos el master (cuando somos un worker)
       //arrancar  la app de formas normal
-    console.log("Arranca un worker");
+    //console.log("Arranca un worker");
 
     /**
      * Get port from environment and store in Express.

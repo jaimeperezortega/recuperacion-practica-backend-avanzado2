@@ -10,18 +10,22 @@
     <h2> LISTADO DE ANUNCIOS
     </h2><br>
     
-
+    <div class="ads-wrapper">
 
       <% for(let anuncio of resultSet){%>
         
-        <p> <img src="/images/<%=anuncio.photo%>" alt="">  <p></p>
-        </p><b>Modelo: </b> <%= anuncio.name %> </p> <b>Precio:</b> <%= anuncio.price %> EUROS 
-        <p></p> <b>Tags:</b> <%= anuncio.tags %>  </p>
-        <p></p> <b>En venta:</b> <%= anuncio.venta %>  </p>
+        
+          <div class="ad-card">
+            <p></p> <img src="/images/<%=anuncio.photo%>" alt="">  <p></p>
+            </p><b>Modelo: </b> <%= anuncio.name %> </p> <b>Precio:</b> <%= anuncio.price %> EUROS 
+            <p></p> <b>Tags:</b> <%= anuncio.tags %>  </p>
+            <p></p> <b>En venta:</b> <%= anuncio.venta %>  </p>
+        </div>
+      
         
         <%}%>
       
-   
+      </div>
      
 
   </body>
