@@ -25,6 +25,13 @@ var app = express();
 
 require("./lib/connectMongoose");
 
+//Setup de i18n
+
+const i18n = require('./lib/i18nConfigure');
+app.use(i18n.init);
+
+i18n.__('Welcome to NodePOP')
+
 //4. Comienza a configurar esa aplicación de express
 
 // view engine setup

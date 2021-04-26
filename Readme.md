@@ -24,6 +24,8 @@
 
   Podemos establecer variables para que nuestro servidor sepa que está en desarrollo, pruebas o en producción. Es importante hacer esta distincion. Lo establecemos en el script de dev del package.json
 
+  Copy .env.example to .env and review the config
+
 ### npm install cross-env
 
 Permite poner distintas variables de entorno a lo largo de distintos sistema operativos. Traducirá nuestra variable de entorno al sistema operativo que estemos usando. No hay problema si usas windows, mac, linux....
@@ -122,7 +124,7 @@ Todas las instancias comparten el mismo puerto.
 
 Podemos ver cada uno de los workers con su pid en el monitor de actividfad del mac
 
-### AUTENTICACIÓN
+### SECRETS AND CONFIG
 
 Es necesario habilitar un sistema de control de acceso a la BBDD. Para ello nos creamos un fichero de configuración en el que establecemos unas credenciales iniciales para poder entrar a la BBDD. Es un fichero externo a nuestro código que no está expuesta en nuestro código.
 
@@ -142,6 +144,21 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STR, {
     useUnifiedTopology: true ,
     useCreateIndex: true 
 });
+
+
+### INTERNACIONALIZACION
+
+Permitimos que un único sitio web sirva sus contenidos en diferentes idiomas y formatos adaptados al cliente. 
+
+--> Internacionalizacion: Preparar el software para que sea localizable
+---> Localizacion: escribir la traduccion y los formatos locales (trabajo de traductores)
+
+i18n = acronimo de internacionalizacion
+
+Inatalar i18n en node: npm install i18n
+Inicializar i18n con: i18n.configure({...})
+Crear archivos de mensajes en carpetas locales
+En nuestro código, usar la función i18n._ _()
 
 
 
