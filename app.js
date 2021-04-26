@@ -41,6 +41,8 @@ app.engine("html", require("ejs").__express);
 
 // Cada uno de estos app.use son como esos jugadores de la partida de poker que deciden responder o pasar ante una petición. Empieza con el primero y le dice que si quiere hacer algo con esa petición. Si tiene programada una respuesta para esa petición, responde, si no, pasa. Todos los middleware tienen habitualmente 3 parámetros (req, res, next) salvo los middleware de error handler que también tienen el parámetro de error.
 
+
+//Declaramos una variable local para todas las vistas
 app.locals.title ="NodePOP" // A partir de este comando en app, cualquier vista tendrá acceso a la variable title NodeApi. Ya no se limitará a la ruta específica donde lo indiquemos
 
 app.use(logger('dev'));
@@ -62,6 +64,8 @@ app.use("/", require("./routes/api/productos"));
  */
 
 app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petición a la raiz del sitio, le está diciendo a nuestra aplicación que utilice este router para ver si hay que responder o no
+
+app.use('/services', require('./routes/services'))
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

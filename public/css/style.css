@@ -19,5 +19,15 @@ img{
 }
 
 .ad-card{
-  margin:2rem;
+  margin:1rem;
+  padding: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: lightseagreen;
+  border-radius: 5px;
 }
+
+h1{
+  margin-top: 2rem;
+}
+

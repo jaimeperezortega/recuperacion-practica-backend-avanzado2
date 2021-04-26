@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
+
+
+<% include header.html %>
+
   <body>
     <h1> <%= __('Welcome to NodePOP') %>  </h1>
-    <h2> <%= __('Listado de anuncios') %>  </h2>
+    <hr>
+    <h3> <%= __('Listado de anuncios') %>  </h3>
 
 
    
@@ -29,5 +28,6 @@
       </div>
      
 
-  </body>
-</html>
+  
+
+  <% include footer.html %>
