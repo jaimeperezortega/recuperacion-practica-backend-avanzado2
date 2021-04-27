@@ -27,7 +27,7 @@
     <div class="container">
       <a class="navbar-brand js-scroll-trigger" href="/"> <%= title %> </a>
       <% getLocales().forEach(locale =>{%>
-        <%= locale %>
+       <a href="/change-locale/<%= locale %>"> <%= locale %> </a> &nbsp
 
       <%})%>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">

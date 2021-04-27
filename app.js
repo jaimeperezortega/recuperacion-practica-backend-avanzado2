@@ -26,10 +26,9 @@ var app = express();
 require("./lib/connectMongoose");
 
 //Setup de i18n
-
+app.use(cookieParser());
 const i18n = require('./lib/i18nConfigure');
 app.use(i18n.init);
-
 i18n.__('Welcome to NodePOP')
 
 //4. Comienza a configurar esa aplicación de express
@@ -48,8 +47,9 @@ app.locals.title ="NodePOP" // A partir de este comando en app, cualquier vista 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 /**
  * Rutas del API
@@ -59,13 +59,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use("/", require("./routes/api/productos"));
 
 
+
+
+
 /**
  * Rutas de mi Website
  */
 
 app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petición a la raiz del sitio, le está diciendo a nuestra aplicación que utilice este router para ver si hay que responder o no
 
-app.use('/services', require('./routes/services'))
+app.use('/services', require('./routes/services'));
+app.use('/change-locale', require('./routes/change-locale'));
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
