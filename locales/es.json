@@ -2,5 +2,9 @@
 	"Welcome to NodePOP": "Bienvenido a NodePOP",
 	"Listado de anuncios": "Listado de anuncios",
 	"This is the services page": "Esta es la página de servicios",
-	"Services": "Servicios"
+	"Services": "Servicios",
+	"Model": "Modelo",
+	"Price": "Precio",
+	"Tags": "Etiquetas",
+	"Sale": "En venta"
 }
