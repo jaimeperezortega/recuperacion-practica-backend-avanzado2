@@ -161,4 +161,6 @@ Crear archivos de mensajes en carpetas locales
 En nuestro código, usar la función i18n._ _()
 
 
+### Database Initialization
 
+npm run init-db

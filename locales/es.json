@@ -6,5 +6,10 @@
 	"Model": "Modelo",
 	"Price": "Precio",
 	"Tags": "Etiquetas",
-	"Sale": "En venta"
+	"Sale": "En venta",
+	"Registro": "Registro",
+	"Dirección de email": "Dirección de email",
+	"No compartiremos tu contraseña con nadie más": "No compartiremos tu contraseña con nadie más",
+	"Contraseña": "Contraseña",
+	"Enviar": "Enviar"
 }

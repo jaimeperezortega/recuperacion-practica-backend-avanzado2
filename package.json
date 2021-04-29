@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "cluster": "node ./bin/cluster",
     "dev": "cross-env PORT=3001 NODE_ENV=development DEBUG=nodeapi:* nodemon",
-    "installDB": "node lib/install_db.js"
+    "installDB": "node lib/install_db.js",
+    "init-db": "node init-db.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -71,6 +71,7 @@ app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petici
 app.use('/services', require('./routes/services'));
 app.use('/change-locale', require('./routes/change-locale'));
 app.use('/users', usersRouter);
+app.use('/login', require ('./controllers/loginController'))
 
 // catch 404 and forward to error handler
 //Cuando no encuentra el parámetro que le estamos pasando en la request crea un error de 404 y lo manda al error handler

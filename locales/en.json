@@ -6,5 +6,10 @@
 	"Model": "Model",
 	"Price": "Price",
 	"Tags": "Tags",
-	"Sale": "Sale"
+	"Sale": "Sale",
+	"Registro": "Login",
+	"Dirección de email": "Email address",
+	"No compartiremos tu contraseña con nadie más": "We will never share your password with third parties",
+	"Contraseña": "Password",
+	"Enviar": "Submit"
 }
