@@ -20,11 +20,19 @@
 
 class LoginController {
     index(req, res, next){
+        res.locals.email = "";
+        res.locals.error = '';
         res.render('login');
     }
 
     post(req, res, next){
+        const {email, password} = req.body;
+        console.log(email, password);
 
+        //Si las credenciales son inválidas:
+        res.locals.email = email; // Le paso a la vista el email que voy a recibir para que le mantenga el email que ha escrito cuando le vuelva a pedir la contraseña porque las credenciales eran erroneas
+        res.locals.error = 'Invalid Credentials';
+        res.render('login');
     }
 }
 

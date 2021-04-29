@@ -2,18 +2,19 @@
 <% include header.html %>
 
 <h1><%= __('Registro') %> </h1>
-<form>
+<form method = "POST">
     <div class="form-group">
       <label for="exampleInputEmail1"><%= __('Dirección de email') %> </label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input value="<%= email %>" name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
       <small id="emailHelp" class="form-text text-muted"><%= __('No compartiremos tu contraseña con nadie más') %> </small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1"><%= __('Contraseña') %> </label>
-      <input type="password" class="form-control" id="exampleInputPassword1">
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1">
     </div>
    
     <button type="submit" class="btn btn-primary"><%= __('Enviar') %> </button>
+    <div> <%= error %> </div>
   </form>
 
 <% include footer.html %>
