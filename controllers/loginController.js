@@ -50,8 +50,9 @@ class LoginController {
 
 
             //2. Si no encontramos el usuario en la base de datos ---> error
+             //3. Si lo encontramos y no coincide la clave ---> error
 
-            if(!usuario){
+            if(!usuario || !(await usuario.comparePassword(password)) ){
 
                 //Si las credenciales son inválidas:
                 res.locals.email = email; // Le paso a la vista el email que voy a recibir para que le mantenga el email que ha escrito cuando le vuelva a pedir la contraseña porque las credenciales eran erroneas
@@ -60,9 +61,9 @@ class LoginController {
                 return //Pongo un return para que no siga ejecutando lo siguiente
             }
 
-            //3. Si lo encontramos y no coincide la clave ---> error
+           
 
-            //TODO hashear las contraseñas
+           
 
             //4. Si el usuario existe y la clave coincide, le redirigimos a la zona privada
 
