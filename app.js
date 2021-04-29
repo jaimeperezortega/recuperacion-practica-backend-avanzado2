@@ -23,7 +23,7 @@ var app = express();
 
 //Cargamos el módulo de mongoose para conectar nuestra aplicación a la base de datos
 
-require("./lib/connectMongoose");
+require("./models/connectMongoose");
 
 //Setup de i18n
 app.use(cookieParser());
