@@ -11,6 +11,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const sessionAuth = require('./lib/sessionAuthMiddleware');
 
 //2. Carga una serie de rutas
 
@@ -101,7 +102,7 @@ app.post('/login', require ('./controllers/loginController').post) //Cuando reci
 
 // catch 404 and forward to error handler
 //Cuando no encuentra el parámetro que le estamos pasando en la request crea un error de 404 y lo manda al error handler
-app.get('/private', require('./controllers/privateController').index);
+app.get('/private', sessionAuth, require('./controllers/privateController').index);
 app.use(function(req, res, next) {
   next(createError(404));
 });
