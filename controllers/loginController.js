@@ -61,10 +61,6 @@ class LoginController {
                 return //Pongo un return para que no siga ejecutando lo siguiente
             }
 
-           
-
-           
-
             //4. Si el usuario existe y la clave coincide, le redirigimos a la zona privada. Apuntar a la sesion del usuario su _id
 
             req.session.usuarioLogado = {
@@ -81,6 +77,21 @@ class LoginController {
         }
         
     }
+
+/**
+ * GET/logout
+ */
+
+ logout(req,res,next){
+     req.session.regenerate(error => {
+         if(error){
+             next(error);
+             return
+         }
+         res.redirect('/');
+     }) // Borra la sesión de la memoria y crea una nueva vacía
+ }
+
 }
 
 module.exports = new LoginController();

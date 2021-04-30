@@ -22,7 +22,8 @@ mongoose.connection.once("open",()=>{
 mongoose.connect(process.env.MONGODB_CONNECTION_STR, { //Normalmente la dirección de la base de datos es una variable de configuración que no está en nuestro código porque esto cambiará en desarrollo con respecto a producción. Estas configuración deberíamos separarla del código en un fichero de configuración que está seprado del código
     useNewUrlParser: true,
     useUnifiedTopology: true ,
-    useCreateIndex: true 
+    useCreateIndex: true,
+     
 });
 
 //Exportamos la propiedad de mongoose.connection

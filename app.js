@@ -12,6 +12,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
 const sessionAuth = require('./lib/sessionAuthMiddleware');
+const loginController = require('./controllers/loginController')
+const MongoStore = require('connect-mongo');
 
 //2. Carga una serie de rutas
 
@@ -23,6 +25,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+
 //Cargamos el módulo de mongoose para conectar nuestra aplicación a la base de datos
 
 require("./models/connectMongoose");
@@ -32,6 +35,9 @@ app.use(cookieParser());
 const i18n = require('./lib/i18nConfigure');
 app.use(i18n.init);
 i18n.__('Welcome to NodePOP')
+
+
+
 
 // app.use((req, res, next) => {
 //   //sacar la cookie nodeapi-session de la petición
@@ -69,6 +75,8 @@ app.use("/", require("./routes/api/productos"));
 
 
 
+// Hacemos disponible la sesión en todas las vistas
+
 
 
 /**
@@ -87,18 +95,25 @@ app.use("/", require("./routes/api/productos"));
     cookie:{
       secure: process.env.NODE_ENV !=='development', //solo se envian al servidor cuando la peticion es https
       maxAge: 1000 * 60 * 60 * 24* 2 //2 días de inactividad
-    }
+    },
+    store: MongoStore.create({ mongoUrl: process.env.MONGODB_CONNECTION_STR})
   }));
+
+  app.use((req, res, next) => {
+    res.locals.session = req.session;
+    next();
+  })
+  
 
 app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petición a la raiz del sitio, le está diciendo a nuestra aplicación que utilice este router para ver si hay que responder o no
 
 app.use('/services', require('./routes/services'));
 app.use('/change-locale', require('./routes/change-locale'));
-app.use('/users', usersRouter);
+app.use('/users',  usersRouter);
 
-app.get('/login', require ('./controllers/loginController').index) // Este middleware lo hemos retocado porque lo que exporta el loginController no es una función sino un objeto con varias funciones. Cuando recibo una petición get a /login quiero utilizar el método index del controlador loginController
-app.post('/login', require ('./controllers/loginController').post) //Cuando recibo una petición de tipo post a /login, entonces lo que quiero utilizar es solo el método post del controlador loginController
-
+app.get('/login', loginController.index) // Este middleware lo hemos retocado porque lo que exporta el loginController no es una función sino un objeto con varias funciones. Cuando recibo una petición get a /login quiero utilizar el método index del controlador loginController
+app.post('/login', loginController.post) //Cuando recibo una petición de tipo post a /login, entonces lo que quiero utilizar es solo el método post del controlador loginController
+app.get('/logout', loginController.logout);
 
 // catch 404 and forward to error handler
 //Cuando no encuentra el parámetro que le estamos pasando en la request crea un error de 404 y lo manda al error handler
