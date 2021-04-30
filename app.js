@@ -10,6 +10,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
 
 //2. Carga una serie de rutas
 
@@ -30,6 +31,13 @@ app.use(cookieParser());
 const i18n = require('./lib/i18nConfigure');
 app.use(i18n.init);
 i18n.__('Welcome to NodePOP')
+
+// app.use((req, res, next) => {
+//   //sacar la cookie nodeapi-session de la petición
+//   //coger el sessionId
+//   //buscar en el almacén de sesiones una sesion con el sessionId que pone en la cookie
+//   //Si encuentro la sesión la pongo en req.session
+// })
 
 //4. Comienza a configurar esa aplicación de express
 
@@ -65,6 +73,21 @@ app.use("/", require("./routes/api/productos"));
 /**
  * Rutas de mi Website
  */
+
+ /**
+  *  Middleware de gestion de sesiones del website
+  */
+
+  app.use(session({
+    name: 'nodepop-session',
+    secret: "njk2fjn5h689u68g39rgkglewjlgj", // Es lo que utilizo para generar los tokens de identificacion de sesion
+    saveUninitialized: true,
+    resave: false,
+    cookie:{
+      secure: process.env.NODE_ENV !=='development', //solo se envian al servidor cuando la peticion es https
+      maxAge: 1000 * 60 * 60 * 24* 2 //2 días de inactividad
+    }
+  }));
 
 app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petición a la raiz del sitio, le está diciendo a nuestra aplicación que utilice este router para ver si hay que responder o no
 

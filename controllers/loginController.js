@@ -65,8 +65,13 @@ class LoginController {
 
            
 
-            //4. Si el usuario existe y la clave coincide, le redirigimos a la zona privada
+            //4. Si el usuario existe y la clave coincide, le redirigimos a la zona privada. Apuntar a la sesion del usuario su _id
 
+            req.session.usuarioLogado = {
+                _id: usuario._id
+            }
+
+            //5. redidirijo a la página privada
             res.redirect("/private")
 
             
