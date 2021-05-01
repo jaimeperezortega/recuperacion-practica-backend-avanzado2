@@ -164,3 +164,16 @@ En nuestro código, usar la función i18n._ _()
 ### Database Initialization
 
 npm run init-db
+
+
+### AUTENTICACIÓN API
+
+La autenticación por token es cuando el servidor le da un token a un cliente
+
+### Envio de emails con Nodemailer
+
+npm install nodemailer
+
+Hay que crear un transport para decirle a que servidor te quieres conectar para enviar un email
+
+Usar servicios de gmail o hotmail pueden provocar que nuestros envios acaben en la carpeta de spam. Si vamos a enviar muchos emails (porque tengamos muchos usuarios conectados) es más recomendable usar aws, sendgrid, sendinblue
