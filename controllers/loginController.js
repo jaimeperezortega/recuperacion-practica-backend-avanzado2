@@ -1,5 +1,7 @@
 'use strict';
 
+const jwt = require('jsonwebtoken');
+
 //Vamos a querer que el controlador devuelva un objeto con diferentes métodos como renderizar, post, delete, etc. Y estas funciones son las que utilizaré en app.js para engancharlas a los middlewares. En app.js añado en las rutas del website app.use('/login') y engancho ese middleware con este controlador para que ejecute lo que yo quiera app.use('/login', require ('./controllers/loginController'))
 
 
@@ -110,13 +112,10 @@ class LoginController {
         res.json({ token: jwtToken});
       });
       
-
-
-      
     } catch(err) {
       next(err);
     }
-  }
+  };
 
 
 /**
