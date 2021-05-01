@@ -71,11 +71,10 @@ app.use(express.static(path.join(__dirname, 'public')));
  * Aquí defino la ruta donde vamos a consumir nuestra API
  */
 
+app.post('/api/loginJWT', loginController.postJWT)
 app.use("/", require("./routes/api/productos"));
 
 
-
-// Hacemos disponible la sesión en todas las vistas
 
 
 
