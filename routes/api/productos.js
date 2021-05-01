@@ -3,10 +3,11 @@ var express = require('express');
 var router = express.Router();
 
 const Producto = require("../../models/Producto")
+const jwtAuth = require('../../lib/jwtAuth')
 
 /* GET /localhost:3000/api/anuncios */
 
-router.get('/api/anuncios', async function(req, res, next) {
+router.get('/api/anuncios', jwtAuth, async function(req, res, next) {
 try{
     const name= req.query.name;
     const price = req.query.price;
