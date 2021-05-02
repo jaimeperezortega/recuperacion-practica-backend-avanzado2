@@ -1,3 +1,4 @@
-node_modules
+node_modules/
 .env
 ejemplo_amqp/
+ejemplo_websockets/

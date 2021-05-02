@@ -177,3 +177,26 @@ npm install nodemailer
 Hay que crear un transport para decirle a que servidor te quieres conectar para enviar un email
 
 Usar servicios de gmail o hotmail pueden provocar que nuestros envios acaben en la carpeta de spam. Si vamos a enviar muchos emails (porque tengamos muchos usuarios conectados) es más recomendable usar aws, sendgrid, sendinblue
+
+### Gestores de colas de tareas
+
+Rabbit MQ (es un software de envio de mensajes entre componentes. Esa comunicación entre los dos componentes se encola en caso de que la comunicación esté cortada. Comunicar 2 procesos entre sí tb se puede hacer a través de una llamada http. Es sencillo pero tiene inconvenientes. Cuando no haya comunicación entre ellos, tienes que ocuparte de hacer los reintentos necesarios para mandar el mensaje ). Implementa el protoclo AMQP que es un protoclo estándar.
+
+Rabbit MQ se puede usar para las Work Queues. Va encargando diferentes tareas pendientes a los workers. Por ejemplo si Nodepop quiere que alguien envie un email, le encarga la tarea solo a un worker (no a varios). Ese consumidor va a intentar hacerlo y tiene un método para avisar si ha conseguido o no ha conseguido hacerlo. Si recibe el mensaje de que ha conseguido hacerlo, esa tarea desaperece de la cola. Normalmente, si un copnsumidor no consigue hacerlo, ese mensaje vuelve a la cola. Este patró de trabajo garantiza que cada tarea solo la consume un consumidor y cuando la consume se quita de la cola.
+
+### Websockets
+
+Es una tecnología avanzada que hace posuble abrir una sesión de comunicaciçon interactiva entre el navegador y un servidor. El protocolo http fue diseñado bajo un modelo - browser - servidor. El iniciador siempre es el cliente.
+
+Todos los browsers soportan websockets. Está diseñada para ser implementada en navegadores y servidores web, pero puede utilizarse por cualquier aplicación cliente / servidor.
+
+Usa los puertos habituales HTTP (80, 443)
+
+Atraviesa firewalls y proxies.
+
+Casos prácticos:
+
+- Juegos online multijugador
+- Aplicaciones de chat
+- Rotativos de información deportiva
+- Actualizaciones en tiempo real de las actividades de tus amigos
