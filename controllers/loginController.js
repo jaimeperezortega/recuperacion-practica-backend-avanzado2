@@ -1,6 +1,7 @@
 'use strict';
 
 const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
 
 //Vamos a querer que el controlador devuelva un objeto con diferentes métodos como renderizar, post, delete, etc. Y estas funciones son las que utilizaré en app.js para engancharlas a los middlewares. En app.js añado en las rutas del website app.use('/login') y engancho ese middleware con este controlador para que ejecute lo que yo quiera app.use('/login', require ('./controllers/loginController'))
 
@@ -69,6 +70,13 @@ class LoginController {
                 _id: usuario._id
             }
 
+
+            //Mandar un email al usuario
+
+            const info = await usuario.enviaEmail('Este es el asunto', 'Bienvenido a NodeAPI');
+            console.log("Message sent: %s", info.messageId);
+            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+      
             //5. redidirijo a la página privada
             res.redirect("/private")
 
