@@ -7,12 +7,14 @@
     "cluster": "node ./bin/cluster",
     "dev": "cross-env PORT=3001 NODE_ENV=development DEBUG=nodeapi:* nodemon",
     "installDB": "node lib/install_db.js",
-    "init-db": "node init-db.js"
+    "init-db": "node init-db.js",
+    "conversionService": "node ./microservices/conversionService.js" 
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.4.1",
     "cookie-parser": "~1.4.4",
+    "cote": "^1.0.2",
     "cross-env": "^7.0.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",

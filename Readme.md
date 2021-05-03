@@ -90,6 +90,9 @@ Para instalar mongoose
 
 Una vez instalado nos vamos a crear un conector a Mongoose. Creamos una carpeta que llamamos lib (como nuestra propia libreria) y dentro de lib creamos un fichero que se llamará connectMongoose.js
 
+### start conversion service (microservice)
+
+npm run conversionService
 
 ## API METHODS
 
@@ -200,3 +203,12 @@ Casos prácticos:
 - Aplicaciones de chat
 - Rotativos de información deportiva
 - Actualizaciones en tiempo real de las actividades de tus amigos
+
+
+### Microservicios
+
+Arquitectura de microservicios. Nace como respuesta a la problemática del mantenimiento y evolución de grandes aplicaciones monolíticas. 
+
+Si no tenemos un problema de mantenimiento, seguramente no necesitaremos microservicios!!
+
+Usamos la librería cote para construit microservicios con cero configuración
