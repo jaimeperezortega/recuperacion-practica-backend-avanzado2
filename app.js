@@ -14,6 +14,8 @@ const session = require('express-session');
 const sessionAuth = require('./lib/sessionAuthMiddleware');
 const loginController = require('./controllers/loginController')
 const MongoStore = require('connect-mongo');
+const multer = require('multer');
+
 
 //2. Carga una serie de rutas
 
@@ -107,7 +109,7 @@ app.use("/", require("./routes/api/productos"));
 app.use('/', indexRouter); // Aquí establece que cuando alguien haga una petición a la raiz del sitio, le está diciendo a nuestra aplicación que utilice este router para ver si hay que responder o no
 
 app.use('/services', require('./routes/services'));
-app.use('/monedas', require('./routes/api/monedas'));
+//app.use('/monedas', require('./routes/api/monedas'));
 app.use('/change-locale', require('./routes/change-locale'));
 app.use('/users',  usersRouter);
 

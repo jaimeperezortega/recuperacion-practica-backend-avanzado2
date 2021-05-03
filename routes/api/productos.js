@@ -3,7 +3,9 @@ var express = require('express');
 var router = express.Router();
 
 const Producto = require("../../models/Producto")
-const jwtAuth = require('../../lib/jwtAuth')
+const jwtAuth = require('../../lib/jwtAuth');
+const multer = require('multer');
+var upload = multer({ dest: 'public/images' })
 
 /* GET /localhost:3000/api/anuncios */
 
@@ -107,7 +109,7 @@ router.get("/api/anuncios/:id", async (req, res, next)=>{
 
 // POST: /api/productos --- > Para crear un nuevo producto. Como es a través del método post, esos datos se los vamos a pasar en el BODY
 
-router.post("/api/anuncios", async (req, res, next)=>{
+router.post("/api/anuncios", upload.single('photo'),  async (req, res, next)=>{
     try {
         const productoData = req.body;
         const producto = new Producto(productoData);
