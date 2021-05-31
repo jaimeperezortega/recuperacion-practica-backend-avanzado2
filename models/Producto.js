@@ -9,7 +9,10 @@ const path = require('path')
 const cote = require('cote')
 const fsPromises = require('fs').promises
 
-
+const thumbnailRequester = new cote.Requester({
+    name: 'thumbnail creator client'
+  }, { log: false, statusLogsEnabled: false })
+  
 
 //1. Definimos un esquema
 
