@@ -41,7 +41,10 @@ productoSchema.methods.setPhoto = async function ({ path: imagePath, originalnam
     const imagePublicPath = path.join(__dirname, '../public/images', imageOriginalName)
     await fs.copy(imagePath, imagePublicPath)
   
-    this.photo = imageOriginalName
+    this.photo = imageOriginalName;
+    thumbnailRequester.send({ type: 'createThumbnail', image: imagePublicPath })
+
+
 }
   
 
