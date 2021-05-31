@@ -1,3 +1,17 @@
+# PRACTICA DESARROLLO BACKEND AVANZADO:
+
+## Inicializar base de datos de anuncios
+
+npm run installDB
+
+## Inicializar base de datos de usuarios
+
+
+npm run init-db
+
+
+
+
 # EXPRESS
 
 ## npx express-generator --ejs nodepop 
@@ -96,17 +110,17 @@ npm run conversionService
 
 ## API METHODS
 
-### GET api/productos
+### GET api/anuncios
 
-Conseguir una lista de productos
+Conseguir una lista de anuncios
 
-### POST api/productos
+### POST api/anuncios
 
-Para crear un nuevo producto
+Para crear un nuevo anuncio
 
-### PUT api/productos:id(body)
+### PUT api/anuncios:id(body)
 
-Para actualizar un producto ya existente
+Para actualizar un anuncio ya existente
 
 
 <---------------------------->
@@ -212,3 +226,8 @@ Arquitectura de microservicios. Nace como respuesta a la problemática del mante
 Si no tenemos un problema de mantenimiento, seguramente no necesitaremos microservicios!!
 
 Usamos la librería cote para construit microservicios con cero configuración
+
+### PM2
+
+npm i pm2
+npx pm2 ecosystem --> Para añadir el fichero ecosystem.config.js
