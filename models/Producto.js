@@ -4,6 +4,11 @@
 //Cargamos la librería de Mongoose
 
 const mongoose = require("mongoose");
+const fs = require('fs-extra')
+const path = require('path')
+const cote = require('cote')
+const fsPromises = require('fs').promises
+
 
 
 //1. Definimos un esquema
@@ -30,6 +35,15 @@ productoSchema.statics.lista = function(filtro, limit, skip, fields, sort){ //Un
 
 }
 
+productoSchema.methods.setPhoto = async function ({ path: imagePath, originalname: imageOriginalName }) {
+    if (!imageOriginalName) return
+  
+    const imagePublicPath = path.join(__dirname, '../public/images', imageOriginalName)
+    await fs.copy(imagePath, imagePublicPath)
+  
+    this.photo = imageOriginalName
+}
+  
 
 //2. Creamos el modelo con el esquema definido
 

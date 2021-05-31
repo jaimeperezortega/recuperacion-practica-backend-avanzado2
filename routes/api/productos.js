@@ -113,6 +113,7 @@ router.post("/api/anuncios", upload.single('photo'),  async (req, res, next)=>{
     try {
         const productoData = req.body;
         const producto = new Producto(productoData);
+        await producto.setPhoto(req.file)
         const productoCreado = await producto.save();
         res.status(201).json({result: productoCreado});
     } catch (error) {
